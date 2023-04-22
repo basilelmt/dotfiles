@@ -1,0 +1,158 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "custom/launcher",
+    "cpu",
+    "memory",
+    "custom/media",
+    "custom/keyboard",
+    "tray"
+  ],
+  "modules-center": [
+    "sway/workspaces"
+  ],
+  "modules-right": [
+    "custom/wallpaper",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "clock",
+    "battery",
+    "custom/power"
+  ],
+  "sway/window": {
+    "icon": false
+  },
+  "pulseaudio": {
+    "tooltip": false,
+    "on-scroll-up": "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "on-scroll-down": "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": " {volume}%",
+    "format-muted": " --%",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "sway/workspaces": {
+    "disable-scroll-wraparound": true,
+    "smooth-scrolling-threshold": 4,
+    "enable-bar-scroll": true,
+    "format": "{name}"
+  },
+  "river/tags": {
+    "num-tags": 6
+  },
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "network": {
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format-wifi": " Signal Strenght: {signalStrength}% \n ipv4: {ipaddr}",
+    "on-click": "~/.config/system-scripts/wifimenu.sh"
+  },
+  "backlight": {
+    "tooltip": false,
+    "format": " {}%",
+    "interval": 1,
+    "on-scroll-down": "light -A 1",
+    "on-scroll-up": "light -U 1"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{: %H:%M   %d/%m/%Y}"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {usage:>2}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "custom/media": {
+    // "interval": 2,
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": " ",
+      "firefox": "󰈹 ",
+      "default": " "
+    },
+    "escape": true,
+    "exec": "$HOME/.config/system-scripts/mediaplayer.py 2> /dev/null",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/launcher": {
+    "format": " ",
+    /* "format": " ",  */
+    "on-click": "wofi",
+    "on-click-right": "killall wofi"
+  },
+  "custom/keyboard": {
+    "format": "󰥻 ",
+    "format-alt": "󰹋 ",
+    "format-alt-click": "click-left",
+    "on-click": "swaymsg input '1:1:AT_Translated_Set_2_keyboard' events toggle enabled disabled",
+    "tooltip-format": " Toggle built-in keyboard "
+  },
+  "custom/spotify": {
+    "format": " {}",
+    "interval": 1,
+    // "exec-if": "pgrep spotify",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-scroll-up": "playerctl -p spotify previous",
+    "on-scroll-down": "playerctl -p spotify next",
+    "tooltip": false,
+    "escape": true,
+    "max-length": 60
+    // "exec": "/home/loki/bin/spotify.sh"
+  },
+  "custom/power": {
+    "format": " ",
+    "on-click": "bash ~/.config/system-scripts/powermenu.sh"
+  },
+  "custom/updates": {
+    "format": "{} Update(s)",
+    "exec": "dnf list updates | wc -l",
+    "exec-if": "[[ $(dnf list updates | wc -l) != 0 ]]",
+    "interval": 15,
+    "on-click": "kitty -e sudo dnf upgrade && notify-send 'The system has been updated'"
+  },
+  "custom/wallpaper": {
+    "format": " ",
+    "on-click": "bash ~/.config/system-scripts/pkill-bc.sh"
+  }
+}

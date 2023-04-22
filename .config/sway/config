@@ -1,0 +1,319 @@
+# Variables
+set $mod Mod4
+set $term ~/.local/bin/kitty
+set $lock ~/scripts/lock.sh
+set $menu wofi
+# set $menu ~/.config/rofi/launchers/type-4/launcher.sh
+# set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -show drun -run-command 'swaymsg exec -- {cmd}'
+# set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -show drun -run-command 'swaymsg exec -- {cmd}'
+set $screenshot grim ~/Pictures/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $zoneclip grim -g "$(slurp -d)" - | wl-copy
+set $zoneshot slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $background ~/Pictures/wallpapers/poro.jpg
+
+set $cl_high #ffffff
+set $cl_indi #d9d8d8
+set $cl_back #231f20
+set $cl_fore #d9d8d8
+set $cl_urge #ee2e24
+
+# Colors                border   bg       text     indi     childborder
+client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
+client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
+client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
+client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
+
+bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d '\n' | wl-copy
+
+# workspaces
+set $ws1   1:
+set $ws2   2:
+set $ws3   3:󰞷
+set $ws4   4:4
+set $ws5   5:5
+set $ws6   6:6
+set $ws7   7:7
+set $ws8   8:8
+set $ws9   9:9
+set $ws0   10:10
+set $wsF1  11:󰙯
+set $wsF2  12:
+set $wsF3  13:
+set $wsF4  14:14
+set $wsF5  15:15
+set $wsF6  16:16
+set $wsF7  17:17
+set $wsF8  18:
+set $wsF9  19:19
+set $wsF10 20:20
+set $wsF11 21:
+set $wsF12 22:22
+
+# Font
+font pango:Sans 12
+
+# Window borders
+default_border pixel 0
+default_floating_border normal
+hide_edge_borders smart
+
+# smart_gaps on
+gaps inner 10
+
+# Autostart
+exec --no-startup-id mako
+exec --no-startup-id redshift -c ~/.config/redshift/config
+exec mailspring
+exec spotify
+exec riot
+exec --no-startup-id nextcloud
+exec --no-startup-id libinput-gestures
+
+# Input configuration
+
+input * {
+  xkb_layout "us"
+  xkb_variant "altgr-weur"
+  xkb_options "caps:swapescape"
+}
+
+input "1739:52715:SYNA30A5:00_06CB:CDEB_Touchpad" {
+  tap enable
+  natural_scroll enable
+}
+# Output configuration
+output * bg $background fill
+
+# Default workspaces for common programs
+assign [class="^Chromium$"] $ws1
+# assign [class="^code-oss$"] $ws2
+assign [class="^Signal$"] $wsF1
+assign [class="^Riot$"] $wsF1
+assign [class="^Mailspring$"] $wsF2
+assign [app_id="virt-manager"] $wsF8
+assign [class="^KeePass2$"] $wsF11
+assign [class="^Spotify$"] $wsF3
+assign [class="^Discord$"] $wsF1
+
+# Shortcuts
+bindsym $mod+Return exec $term 
+bindsym Print exec $screenshot
+bindsym Shift+Print exec $screenclip
+bindsym $mod+Shift+Print exec $zoneclip
+bindsym $mod+Print exec $zoneshot
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+t exec swaymsg input '1:1:AT_Translated_Set_2_keyboard' events toggle enabled disabled
+
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+e exit
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+Escape exec $power
+bindsym $mod+End exec $wifi
+
+# Notifications
+bindsym Control+Space exec makoctl dismiss
+bindsym Control+Shift+Space exec makoctl dismiss --all
+
+# Multimedia
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Brightness controls
+bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
+
+# Toggle Redshift
+bindsym $mod+Home exec --no-startup-id pkill -USR1 redshift
+
+# Idle configuration
+exec swayidle \
+    timeout 300 'exec $lock' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    after-resume 'swaymsg "output * dpms on"' \
+    before-sleep 'exec $lock'
+
+# Move your focus around
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# _move_ the focused window with the same, but add Shift
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# switch to workspace
+bindsym $mod+1   workspace $ws1
+bindsym $mod+2   workspace $ws2
+bindsym $mod+3   workspace $ws3
+bindsym $mod+4   workspace $ws4
+bindsym $mod+5   workspace $ws5
+bindsym $mod+6   workspace $ws6
+bindsym $mod+7   workspace $ws7
+bindsym $mod+8   workspace $ws8
+bindsym $mod+9   workspace $ws9
+bindsym $mod+0   workspace $ws0
+bindsym $mod+F1  workspace $wsF1
+bindsym $mod+F2  workspace $wsF2
+bindsym $mod+F3  workspace $wsF3
+bindsym $mod+F4  workspace $wsF4
+bindsym $mod+F5  workspace $wsF5
+bindsym $mod+F6  workspace $wsF6
+bindsym $mod+F7  workspace $wsF7
+bindsym $mod+F8  workspace $wsF8
+bindsym $mod+F9  workspace $wsF9
+bindsym $mod+F10 workspace $wsF10
+bindsym $mod+F11 workspace $wsF11
+bindsym $mod+F12 workspace $wsF12
+
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace $ws1
+bindsym $mod+Shift+2    move container to workspace $ws2
+bindsym $mod+Shift+3    move container to workspace $ws3
+bindsym $mod+Shift+4    move container to workspace $ws4
+bindsym $mod+Shift+5    move container to workspace $ws5
+bindsym $mod+Shift+6    move container to workspace $ws6
+bindsym $mod+Shift+7    move container to workspace $ws7
+bindsym $mod+Shift+8    move container to workspace $ws8
+bindsym $mod+Shift+9    move container to workspace $ws9
+bindsym $mod+Shift+0    move container to workspace $ws0
+bindsym $mod+Shift+F1   move container to workspace $wsF1
+bindsym $mod+Shift+F2   move container to workspace $wsF2
+bindsym $mod+Shift+F3   move container to workspace $wsF3
+bindsym $mod+Shift+F4   move container to workspace $wsF4
+bindsym $mod+Shift+F5   move container to workspace $wsF5
+bindsym $mod+Shift+F6   move container to workspace $wsF6
+bindsym $mod+Shift+F7   move container to workspace $wsF7
+bindsym $mod+Shift+F8   move container to workspace $wsF8
+bindsym $mod+Shift+F9   move container to workspace $wsF9
+bindsym $mod+Shift+F10  move container to workspace $wsF10
+bindsym $mod+Shift+F11  move container to workspace $wsF11
+bindsym $mod+Shift+F12  move container to workspace $wsF12
+
+# Layout stuff:
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# move focus to the parent container
+bindsym $mod+a focus parent
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Modes
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+# mode "$mode_system" {
+#     bindsym l exec $lock, mode "default"
+#     bindsym e exit
+#     bindsym s exec --no-startup-id systemctl suspend, mode "default"
+#     bindsym r exec --no-startup-id systemctl reboot, mode "default"
+#     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+#     bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+#
+#     # return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+Shift+e exec ~/.config/rofi/powermenu/type-3/powermenu.sh
+bindsym $mod+Shift+e exec ~/.config/system-scripts/powermenu.sh
+
+exec_always ~/.config/waybar/waybar.sh
+exec_always ~/.config/system-scripts/notes-autopush.sh
+exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+
+set $opacity 0.97
+for_window {
+  [class=".*"] opacity $opacity
+  [app_id=".*"] opacity $opacity
+}
+
+
+
+bindsym $mod+g exec swaymsg \[con_id=$(swaymsg -t get_tree | jq -r '.nodes[1].nodes[].nodes[] | .. | (.id|tostring) + " " + .name?' | grep -e "[0-9]* ." | wofi -d | awk '{print $1}')] focus
+
+# default_orientation vertical
+# for_window [app_id=".*"] split toggle
+
+bindsym $mod+Control+a exec ~/.config/sway/toggle_trans.sh
+
+# set $aphamark "α"
+# set $trans 0.97 
+# for_window [con_mark=$alphamark] opacity set $trans
+# bindsym $mod+Control+a mark --toggle "$alphamark" ; [con_id=__focused__] opacity set 1 ; [con_mark=$alphamark con_id=__focused__] opacity set $trans
+
+# set floating (nontiling)for apps needing it:
+for_window [class="Yad" instance="yad"] floating enable
+for_window [app_id="thunar"] floating enable
+for_window [app_id="org.gnome.Nautilus"] floating enable, opacity 1
+for_window [app_id="yad"] floating enable
+for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+for_window [app_id="mpv"] floating enable, opacity 1
+
+# set floating (nontiling) for special apps:
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
+for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+
+# set floating for window roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="firedragon" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [title="Picture in picture"] floating enable, sticky enable
+for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
+for_window [title="htop"] floating enable, resize set width 50 ppt height 70 ppt
+for_window [app_id="xsensors"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="firedragon" title="firedragon — Sharing Indicator"] kill
+
+# Inhibit idle
+for_window [app_id="firedragon"] inhibit_idle fullscreen
+for_window [app_id="Chromium"] inhibit_idle fullscreen
+
+include ~/etc/sway/config.d/*
+
+

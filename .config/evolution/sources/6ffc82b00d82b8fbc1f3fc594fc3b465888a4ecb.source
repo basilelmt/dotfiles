@@ -1,0 +1,23 @@
+[Data Source]
+DisplayName=basile.lamotte@gmail.com
+Enabled=true
+Parent=34dfe05c9ec07716329bfe76c37ae0cdba2ffa77
+
+[Authentication]
+Host=smtp.gmail.com
+Method=XOAUTH2
+Port=465
+ProxyUid=system-proxy
+RememberPassword=true
+User=basile.lamotte@gmail.com
+CredentialName=
+IsExternal=false
+
+[Security]
+Method=ssl-on-alternate-port
+
+[Mail Transport]
+BackendName=smtp
+
+[Smtp Backend]
+ReencodeData=false

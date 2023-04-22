@@ -1,0 +1,7 @@
+2023/03/26-01:05:10.010 3 Reusing MANIFEST /home/basile/.config/chromium/Default/Local Storage/leveldb/MANIFEST-000001
+2023/03/26-01:05:10.013 3 Recovering log #4
+2023/03/26-01:05:10.034 3 Level-0 table #7: started
+2023/03/26-01:05:10.054 3 Level-0 table #7: 1505810 bytes OK
+2023/03/26-01:05:10.054 3 Recovering log #6
+2023/03/26-01:05:10.055 3 Reusing old log /home/basile/.config/chromium/Default/Local Storage/leveldb/000006.log 
+2023/03/26-01:05:10.059 3 Delete type=0 #4

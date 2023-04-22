@@ -1,0 +1,179 @@
+/* Colors (gruvbox) */
+@import "../colors/mocha.css";
+
+* {
+	border: none;
+	border-radius: 10px;
+  font-family: "JetbrainsMono Nerd Font" ;
+	font-size: 15px;
+	min-height: 10px;
+}
+
+window#waybar {
+	background: transparent;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+#window {
+	margin-top: 6px;
+	padding-left: 10px;
+padding-right: 10px;
+	border-radius: 10px;
+	transition: none;
+  color: transparent;
+	background: transparent;
+}
+
+#mode, #language, #custom-spotify, #tray,#custom-keyboard, #custom-date, #custom-wallpaper, #custom-launcher, #custom-power, #custom-media, #custom-updates, #clock, #battery, #backlight, #pulseaudio, #network, #mpd, #memory, #cpu  {
+  border-radius: 10px;
+  /* background: #161320; */
+  margin: 10px 0px 0px 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+	transition: none;
+  background: #1F2132;
+  color: #96CDFB;
+  /* border: 0.1rem solid #96CDFB */
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+      background-color: #561320;
+    }
+}
+
+#mode {
+	background: rgba(  0, 43, 54, 0.8);
+	border-top: 2px rgba(238,232,213, 0.8);
+  padding: 0 10px;
+  margin: 0 5px;
+}
+
+
+#custom-launcher {
+	font-size: 24px;
+  padding-right: 5px;
+  margin-left: 10px;
+  color: #1F2132;
+  background: #89DCEB;
+}
+#custom-keyboard {
+	font-size: 26px;
+  padding-right: 0px;
+  color: #1F2132;
+  background: #89DCEB;
+}
+
+/* #custom-keyboard { */
+/* 	font-size: 26px; */
+/*   padding-right: 0px; */
+/*   color: #89DCEB; */
+/*   background: #1F2132; */
+/* } */
+#custom-power {
+  font-size: 24px;
+  padding-right: 5px;
+  margin-right: 10px;
+  color: #161320;
+  background: #89DCEB;
+}
+
+#custom-updates {
+	color: #161320;
+	background: #E8A2AF;
+}
+
+#workspaces {
+  border-radius: 10px;
+  transition: none;
+  /* background: #161320; */
+  background: #1F2132;
+  margin: 10px 0px 0px 5px;
+}
+
+#workspaces button{
+  color: #96CDFB;
+  background: #161320;
+  background: #1F2132;
+  border-radius: 10px;
+  padding: 10px 15px 10px 10px;
+  margin: 0px 0px 0px 0px;
+}
+
+#workspaces button:hover {
+  background: @surface1;
+  color: @text;
+}
+
+#workspaces button.focused {
+  /* color: #96CDFB; */
+
+  border: 0.1rem solid #96CDFB;
+  /* background: #1e1a2c; */
+  /* color: #161320; */
+  background: #1F2132;
+  color: #96CDFB;
+  /* color: #DDB6F2; */
+}
+
+#workspaces button.active {
+  color: red;
+  background: red;
+  padding: 10px 15px 10px 15px;
+}
+
+#tags {
+	margin-top: 6px;
+	margin-left: 12px;
+	font-size: 4px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	background: #161320;
+	transition: none;
+}
+
+#tags button {
+	transition: none;
+	color: #B5E8E0;
+	background: transparent;
+	font-size: 16px;
+	border-radius: 2px;
+}
+
+#tags button.occupied {
+	transition: none;
+	color: #F28FAD;
+	background: transparent;
+	font-size: 4px;
+}
+
+#tags button.focused {
+	color: #ABE9B3;
+    border-top: 2px solid #ABE9B3;
+    border-bottom: 2px solid #ABE9B3;
+}
+
+#tags button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: #FAE3B0;
+    border-color: #E8A2AF;
+    color: #E8A2AF;
+}
+
+#tags button.focused:hover {
+    color: #E8A2AF;
+}
+
