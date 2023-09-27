@@ -1,2 +1,3 @@
-2023/03/26-00:44:57.344 1342 Creating DB /home/basile/.config/chromium/Default/shared_proto_db since it was missing.
-2023/03/26-00:44:57.358 1342 Reusing MANIFEST /home/basile/.config/chromium/Default/shared_proto_db/MANIFEST-000001
+2023/09/20-10:53:58.084 1064 Reusing MANIFEST /home/basile/.config/chromium/Default/shared_proto_db/MANIFEST-000001
+2023/09/20-10:53:58.084 1064 Recovering log #3
+2023/09/20-10:53:58.084 1064 Reusing old log /home/basile/.config/chromium/Default/shared_proto_db/000003.log 

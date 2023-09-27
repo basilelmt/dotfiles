@@ -7,7 +7,7 @@ or other application using the libvirt API.
 
 <pool type='dir'>
   <name>gnome-boxes</name>
-  <uuid>f2c8d99a-deab-46be-a13d-ede5c6589e45</uuid>
+  <uuid>b53f82a7-428f-42a3-b55c-787a44971d0c</uuid>
   <capacity unit='bytes'>0</capacity>
   <allocation unit='bytes'>0</allocation>
   <available unit='bytes'>0</available>

@@ -3,3 +3,11 @@ name=QEMU Session
 type=libvirt
 uri=qemu+unix:///session
 save-on-quit=true
+
+[display 3049948c-a8a5-442e-ad5a-241fd4ad23ea]
+last-seen-name=pop-os_22
+uuid=3049948c-a8a5-442e-ad5a-241fd4ad23ea
+acceleration-3d=false
+run-in-bg=true
+access-last-time=1683311925295490
+access-ntimes=1

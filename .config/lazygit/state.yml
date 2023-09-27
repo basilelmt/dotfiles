@@ -1,8 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/basile/Projects/showcase
+- /home/basile/dotfiles
+- /home/basile/Projects/lore
 - /home/basile/notes
-- /home/basile/Projects/urban-warriors
+- /home/basile/courses/ai/assignements/Evolutionary-Optimization
+- /home/basile/Projects/citaizen_arch
+- /home/basile/Projects/ai_server
+- /home/basile/Projects/B-PRO-600-MPL-6-1-tech3internship-basile.lamotte
 startuppopupversion: 5
-customcommandshistory: []
-hidecommandlog: false
+customcommandshistory:
+- q
+hidecommandlog: true
+ignorewhitespaceindiffview: false

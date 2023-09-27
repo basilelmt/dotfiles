@@ -7,11 +7,13 @@ allow_images=true
 no_actions=true
 
 insensitive=true
+line_wrap=word
+
 
 height=31%
 width=25%
 
-term=foot
+term=kitty
 
 /* location=1 */
 /* xoffset=10 */
@@ -19,8 +21,8 @@ term=foot
 
 image_size=25
 
-dynamic_lines=true
 drun-display_generic=true
-
 layer=overlay
-print_command=true
+key_down=Control_L-n
+key_up=Control_L-p
+Clear=Control_L-w

@@ -5,15 +5,16 @@ return {
     opts = {
       load = {
         ["core.defaults"] = {}, -- Loads default behaviour
-        ["core.norg.esupports.hop"] = {},
-        ["core.norg.concealer"] = {
+        ["core.esupports.hop"] = {},
+        ["core.concealer"] = {
           config = {
             folds = false,
             icon_preset = "diamond",
           },
         }, -- Adds pretty icons to your documents
-        -- ["core.norg.completion"] = {},
-        ["core.norg.dirman"] = { -- Manages Neorg workspaces
+        ["core.export"] = {},
+        ["core.summary"] = {},
+        ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
               notes = "~/notes",

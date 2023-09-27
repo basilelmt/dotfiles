@@ -1,0 +1,14 @@
+2023/09/20-10:53:58.193 1061 Reusing MANIFEST /home/basile/.config/chromium/Default/IndexedDB/chrome-extension_oocalimimngaihdkbihfgmpkcpnmlaoa_0.indexeddb.leveldb/MANIFEST-000001
+2023/09/20-10:53:58.194 1061 Recovering log #17
+2023/09/20-10:53:58.194 1061 Reusing old log /home/basile/.config/chromium/Default/IndexedDB/chrome-extension_oocalimimngaihdkbihfgmpkcpnmlaoa_0.indexeddb.leveldb/000017.log 
+2023/09/20-10:53:58.194 1061 Delete type=2 #15
+2023/09/20-10:53:58.207 10ab Level-0 table #22: started
+2023/09/20-10:53:58.208 10ab Level-0 table #22: 897 bytes OK
+2023/09/20-10:53:58.210 10ab Delete type=0 #17
+2023/09/20-10:53:58.210 1064 Manual compaction at level-0 from '\x00\x08\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at '\x00\x08\x00\x00\x05' @ 288 : 1
+2023/09/20-10:53:58.211 1064 Compacting 1@0 + 1@1 files
+2023/09/20-10:53:58.212 1064 Generated table #23@0: 62 keys, 1576 bytes
+2023/09/20-10:53:58.212 1064 Compacted 1@0 + 1@1 files => 1576 bytes
+2023/09/20-10:53:58.216 1064 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/09/20-10:53:58.216 1064 Delete type=2 #22
+2023/09/20-10:53:58.216 10ab Manual compaction at level-0 from '\x00\x08\x00\x00\x05' @ 288 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at (end)

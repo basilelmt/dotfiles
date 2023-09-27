@@ -3,6 +3,7 @@
   "modules-left": [
     "custom/launcher",
     "cpu",
+    "temperature",
     "memory",
     "custom/media",
     "custom/keyboard",
@@ -12,7 +13,6 @@
     "sway/workspaces"
   ],
   "modules-right": [
-    "custom/wallpaper",
     "network",
     "pulseaudio",
     "backlight",
@@ -28,7 +28,7 @@
     "on-scroll-up": "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ -2%",
     "on-scroll-down": "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "format": "{icon} {volume}%",
-    "format-bluetooth": " {volume}%",
+    "format-bluetooth": "󰋋 {volume}%",
     "format-muted": " --%",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "format-icons": {
@@ -52,10 +52,17 @@
     "format": " {}",
     "max-length": 50
   },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+    // "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
   "network": {
     "format-wifi": "  {essid}",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰤭 ",
+    "format-ethernet": "󰈀  ethernet",
+    "format-disconnected": "󰤭  disconnected",
     "tooltip-format-wifi": " Signal Strenght: {signalStrength}% \n ipv4: {ipaddr}",
     "on-click": "~/.config/system-scripts/wifimenu.sh"
   },
@@ -82,14 +89,27 @@
       "",
       "",
       ""
-    ],
+    ]
   },
   "tray": {
     "icon-size": 18,
     "spacing": 10
   },
   "clock": {
-    "format": "{: %H:%M   %d/%m/%Y}"
+    "format": "{: %H:%M   %d/%m/%Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#cba6f7'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weekdays": "<span color='#96CDFB'><b>{}</b></span>",
+        "today": "<span color='#f38ba8'><b>{}</b></span>"
+      }
+    }
   },
   "cpu": {
     "interval": 10,
@@ -113,7 +133,7 @@
     },
     "escape": true,
     "exec": "$HOME/.config/system-scripts/mediaplayer.py 2> /dev/null",
-    "on-click": "playerctl play-pause"
+    "on-click": "playerctl --player=%any,firefox play-pause"
   },
   "custom/launcher": {
     "format": " ",
@@ -124,15 +144,15 @@
   "custom/keyboard": {
     "format": "󰥻 ",
     "format-alt": "󰹋 ",
+    "tooltip": false,
     "format-alt-click": "click-left",
-    "on-click": "swaymsg input '1:1:AT_Translated_Set_2_keyboard' events toggle enabled disabled",
-    "tooltip-format": " Toggle built-in keyboard "
+    "on-click": "bash ~/.config/system-scripts/toggle_keybord.sh"
   },
   "custom/spotify": {
     "format": " {}",
     "interval": 1,
     // "exec-if": "pgrep spotify",
-    "on-click": "playerctl -p spotify play-pause",
+    "on-click": "playerctl --player=%any,firefox play",
     "on-scroll-up": "playerctl -p spotify previous",
     "on-scroll-down": "playerctl -p spotify next",
     "tooltip": false,

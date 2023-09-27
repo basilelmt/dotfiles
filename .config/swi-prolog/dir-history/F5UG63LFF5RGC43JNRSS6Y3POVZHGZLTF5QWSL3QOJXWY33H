@@ -1,0 +1,11 @@
+_HiStOrY_V2_
+['list.pl'].
+is_a_list([a,b,c]).
+is_a_list([a]).
+is_a_list([]).
+is_a_list().
+is_a_list(sa).
+is_a_list(aa).
+is_a_list('salut').
+is_a_list(aa).
+is_a_list([]).

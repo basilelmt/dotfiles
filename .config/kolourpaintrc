@@ -1,22 +1,31 @@
 [General Settings]
+Color Similarity=0.1
 First Time=false
+Last Document Size=800,688
 Open Images in the Same Window=false
 
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/courses/ai/assignements/Evolutionary-Optimization/ressources/queen.png,file:$HOME/cyp.png
+Recent URLs[$e]=file:$HOME/courses/ai/assignements/Evolutionary-Optimization/ressources/,file:$HOME/
+detailViewIconSize=16
+
 [MainWindow]
-1920x1080 screen: Height=1007
-1920x1080 screen: Width=945
-State=AAAA/wAAAAD9AAAAAQAAAAMAAANtAAAAY/wBAAAAAfsAAAASAEMAbwBsAG8AcgAgAEIAbwB4AQAAAEQAAANtAAACDQD///8AAANtAAADMwAAAAQAAAAEAAAAAQAAAAL8AAAAAgAAAAAAAAABAAAAEABUAG8AbwBsACAAQgBvAHgDAAAAAP////8AAAAAAAAAAAAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABYAdABlAHgAdABUAG8AbwBsAEIAYQByAAAAAAD/////AAAAAAAAAAA=
+1920x1080 screen: Height=1009
+1920x1080 screen: Width=1900
+State=AAAA/wAAAAD9AAAAAQAAAAMAAAcoAAAAY/wBAAAAAfsAAAASAEMAbwBsAG8AcgAgAEIAbwB4AQAAAEQAAAcoAAACDQD///8AAAcoAAADNQAAAAQAAAAEAAAAAQAAAAL8AAAAAgAAAAAAAAABAAAAEABUAG8AbwBsACAAQgBvAHgDAAAAAP////8AAAAAAAAAAAAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABYAdABlAHgAdABUAG8AbwBsAEIAYQByAAAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
 
 [MainWindow][Toolbar Tool Box]
 ToolButtonStyle=IconOnly
 
 [Recent Files]
-File1[$e]=$HOME/Projects/urban-warriors/assets/plarticle-player.png
-Name1[$e]=plarticle-player.png
+File1[$e]=$HOME/courses/ai/assignements/Evolutionary-Optimization/ressources/queen.png
+File2[$e]=$HOME/cyp.png
+Name1[$e]=queen.png
+Name2[$e]=cyp.png
 
 [Tool Settings]
-Last Used Tool=8
+Last Used Tool=7
 Tool Widget Brush Col=0
 Tool Widget Brush Row=0
 Tool Widget Eraser Size Col=0
@@ -28,7 +37,7 @@ Tool Widget Line Width Row=0
 Tool Widget Opaque/Transparent Col=0
 Tool Widget Opaque/Transparent Row=0
 Tool Widget Spraycan Size Col=0
-Tool Widget Spraycan Size Row=0
+Tool Widget Spraycan Size Row=1
 
 [Undo/Redo Settings]
 Max Limit=500

@@ -1,0 +1,29 @@
+[Data Source]
+DisplayName=basile.lamotte@gmail.com
+Enabled=true
+Parent=f460e6c7cc4bf448f9d3f2d10afe031bbb8ca9ec
+
+[Mail Submission]
+SentFolder=folder://local/Sent
+TransportUid=29161184d2965816deacf9ee2de512733eb3734e
+RepliesToOriginFolder=false
+UseSentFolder=true
+
+[Mail Composition]
+Bcc=
+Cc=
+DraftsFolder=folder://local/Drafts
+ReplyStyle=default
+SignImip=true
+TemplatesFolder=
+StartBottom=inconsistent
+TopSignature=inconsistent
+Language=
+
+[Mail Identity]
+Address=basile.lamotte@gmail.com
+Aliases=
+Name=
+Organization=
+ReplyTo=
+SignatureUid=none
