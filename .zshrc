@@ -1,3 +1,9 @@
+autoload -U colors && colors
+source ~/.oh-my-zsh/instant-zsh.zsh
+instant-zsh-pre "%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ ) %{$fg[cyan]%}%c%{$reset_color%  "
+# instant-zsh-pre "%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~) %{$reset_color%}%% "
+# instant-zsh-pre "%B%39F${${(V)${(%):-%~}//\%/%%}//\//%b%31F/%B%39F}%b%f"$'\n'"%76F❯%f "
+# zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -72,10 +78,14 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	sudo
   autojump
-  colored-man-pages
+  zsh-syntax-highlighting
+  zsh-autocomplete
+  zsh-autosuggestions
   fzf
+  thefuck
+  web-search
+	sudo
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -111,17 +121,85 @@ alias zshconfig="nvim ~/.zshrc"
 alias ls="exa --icons"
 alias ll="ls -l"
 
-alias c="xclip"
-alias clip="xclip -selection clipboard"
-alias v="xclip -o"
-alias cdn="cd ./*(/om[1])"
-alias ipv4="ip -4 addr show wlp0s20f3 | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | tr -d '\n' | clip"
-alias docker-clean="~/scripts/docker-clean.sh"
-alias today="date +\"📅 %A %d %b %Y - %Hh%M\""
-alias note="nvim -c 'Neorg workspace notes'"
+alias c='xclip'
+alias clip='wl-copy -n'
+alias v='xclip -o'
+alias cdn='cd ./*(/om[1])'
+alias docker-clean='~/scripts/docker-clean.sh'
+alias tomatoshell='~/scripts/tomatoshell.sh'
+alias today='date +"📅 %A %d %B %Y - %Hh%M"'
+alias neorg='cd ~/notes/ ; nvim -c "Neorg workspace notes"'
+alias copydir='pwd | wl-copy -n'
+
+cf () {
+  local fname
+  fname=$(fd . -Ht d | fzf) || return
+  cd "$fname"
+}
+
+nf () {
+  local fname
+  fname=$(fd . -Ht f | fzf) || return
+  cd "$fname:h"
+  nvim "$fname:t"
+}
+
+zf () {
+  local fname
+  fname=$(fd -e pdf . | fzf) || return
+  zathura "$fname" --fork
+}
+
+mvdl () {
+  mv ~/Downloads/*(om[1,${1-1}]) . #`${1-1}` will use $1 is defined else 1
+}
+
+ipv4 () {
+  local ip
+  ip=$(ip -4 addr show wlp0s20f3 | grep -oP "(?<=inet\s)\d+(\.\d+){3}" | tr -d "\n")
+  printf "$ip" | wl-copy
+  printf "\033[1;34m$ip\033[0m has been copied in the clipboard!\n"
+}
+
+export MANPAGER='nvim +Man\!'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--pointer= --prompt=' ' "
+
 
 # sourcing
-source /home/basile/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
+source ~/.oh-my-zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source ~/.zsh-autopair/autopair.zsh
+autopair-init
+[ -s "/home/basile/.bun/_bun" ] && source "/home/basile/.bun/_bun"
+
+() {
+   local -a prefix=( '\e'{\[,O} )
+   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+   local key=
+   for key in $up[@]; do
+      bindkey "$key" up-line-or-history
+   done
+   for key in $down[@]; do
+      bindkey "$key" down-line-or-history
+   done
+}
 
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/basile/.spicetify
+export PATH=$PATH:/root/.local/bin
+export PATH=$PATH:$HOME/.local/bin
+
+# bun completions
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# zprof
+
+eval $(thefuck --alias --yeah)
