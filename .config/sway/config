@@ -3,7 +3,7 @@ include catppuccin-mocha
 # Variables
 set $mod Mod4
 set $term ~/.local/bin/kitty
-set $lock ~/scripts/lock.sh
+set $lock ~/.config/system-scriptslock.sh
 set $menu wofi
 # set $menu ~/.config/rofi/launchers/type-4/launcher.sh
 # set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -show drun -run-command 'swaymsg exec -- {cmd}'
