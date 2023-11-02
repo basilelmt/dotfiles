@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-while true; do
-	swaybg -i $(find ~/Pictures/wallpapers -type f | shuf -n 1) -m fill
-	sleep 29m
-done
-sleep 1m
