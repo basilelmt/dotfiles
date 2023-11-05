@@ -1,9 +1,18 @@
+#
+#    ███████╗██╗    ██╗ █████╗ ██╗   ██╗
+#    ██╔════╝██║    ██║██╔══██╗╚██╗ ██╔╝
+#    ███████╗██║ █╗ ██║███████║ ╚████╔╝ 
+#    ╚════██║██║███╗██║██╔══██║  ╚██╔╝  
+# ██╗███████║╚███╔███╔╝██║  ██║   ██║   
+# ╚═╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   
+# Sway config file
+
 include catppuccin-mocha
 
 # Variables
 set $mod Mod4
 set $term ~/.local/bin/kitty
-set $lock ~/.config/system-scriptslock.sh
+set $lock ~/.config/system-scripts/lock.sh
 set $menu wofi
 # set $menu ~/.config/rofi/launchers/type-4/launcher.sh
 # set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -show drun -run-command 'swaymsg exec -- {cmd}'
@@ -12,13 +21,15 @@ set $menu wofi
 set $screenshot grim ~/Pictures/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip grim - | wl-copy
 set $zoneclip grim -g "$(slurp -d)" - | wl-copy
-set $zoneshot slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $zoneshot slurp | grim -g - ~/Pictures/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 
+# set $background ~/Pictures/wallpapers/poroh.jpg
 set $background ~/Pictures/wallpapers/poroh.jpg
 
 # swayfx
 corner_radius 10
 blur enable
+# default_dim_inactive 0.15
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $rosewater $lavender
@@ -32,8 +43,8 @@ client.background        $base
 bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | tr -d '\n' | wl-copy
 
 # workspaces
-set $ws1   1:
-set $ws2   2:
+set $ws1   1:󰈹
+set $ws2   2:󰋜
 set $ws3   3:󰞷
 set $ws4   4:4
 set $ws5   5:5
@@ -68,7 +79,6 @@ gaps inner 10
 
 # Autostart
 exec --no-startup-id mako
-exec spotify
 exec --no-startup-id nextcloud
 exec --no-startup-id libinput-gestures
 
@@ -99,6 +109,8 @@ assign [class="^KeePass2$"] $wsF11
 assign [class="^Spotify$"] $wsF3
 assign [class="^discord$"] $wsF1
 
+floating_modifier $mod
+
 # Shortcuts
 bindsym $mod+Return exec $term 
 bindsym Print exec $screenshot
@@ -119,7 +131,7 @@ bindsym $mod+End exec $wifi
 
 # Notifications
 bindsym Control+Space exec makoctl dismiss
-bindsym Control+Shift+Space exec makoctl dismiss --all
+bindsym Control+Shift+Space exec makoctl restore
 
 # Multimedia
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -259,6 +271,7 @@ bindsym $mod+Shift+e exec ~/.config/system-scripts/powermenu.sh
 
 exec_always ~/.config/waybar/waybar.sh
 exec_always ~/.config/system-scripts/notes-autopush.sh
+exec_always autotiling
 # exec_always ~/.config/system-scripts/monitor.sh
 exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
@@ -293,10 +306,11 @@ for_window [class="Yad" instance="yad"] floating enable
 for_window [app_id="thunar"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable, opacity 1
 for_window [app_id="yad"] floating enable
-for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
+for_window [app_id="blueman-manager"] floating enable, resize set width 10 ppt height 40 ppt, move position cursor, move down 90
+# for_window [app_id="blueman-manager"] floating enable, sticky enable, resize set width 550 px height 600px, move position cursor, move down 35
 for_window [app_id="mpv"] floating enable, opacity 1
 for_window [app_id="feh"] floating enable, opacity 1
-for_window [app_id="imv"] floating enable, opacity 1
+for_window [app_id="feh"] floating enable, opacity 1
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -322,7 +336,7 @@ for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, s
 for_window [title="Picture in picture"] floating enable, sticky enable
 # for_window [title="nmtui"] floating enable,  resize set width 50 ppt height 70 ppt
 for_window [title="htop"] floating enable, resize set width 50 ppt height 70 ppt
-for_window [title="^insect$"] floating enable; shadows enable; resize set width 700 height 700;
+for_window [title="^numbat$"] floating enable; shadows enable; resize set width 700 height 700;
 # exec ~/.config/system-scripts/sway-move-to bottom-right
 # for_window [title="btop"] floating enable, resize set width 50 ppt height 70 ppt
 for_window [app_id="xsensors"] floating enable

@@ -28,11 +28,12 @@
 
 #window {
 	border-radius: 10px;
-  background-color: #1F2132;
+  background-color: #1e1e2e;
+  animation: fadeIn 0.2s ease-in-out both;
 }
 
 #outer-box {
-	background-color: #1F2132;
+	background-color: #1e1e2e;
 	border-radius: 10px;
 }
 
@@ -45,11 +46,23 @@
 	border-color: #96CDFB;
 	border-style: solid;
 	border-width: 2px;
+  /* animation: fadeIn 0.2s ease-in-out both; */
 }
 
 #inner-box {
 	margin: 6px;
 }
+
+/* Fade In */
+/* @keyframes fadeIn { */
+/*   0% { */
+/*       opacity: 0; */
+/*   } */
+/**/
+/*   100% { */
+/*       opacity: 1; */
+/*   } */
+/* } */
 
 #img {
 	padding: 0 10px 0 5px;

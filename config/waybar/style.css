@@ -9,8 +9,19 @@
 	min-height: 10px;
 }
 
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
 window#waybar {
 	background: transparent;
+  /* animation: fadeIn 1s ease-in-out both */
 }
 
 window#waybar.hidden {
@@ -38,9 +49,9 @@ tooltip label {
 	background: transparent;
 }
 
-#mode, #temperature, #language, #custom-spotify, #tray,#custom-keyboard, #custom-date, #custom-wallpaper, #custom-launcher, #custom-power, #custom-media, #custom-updates, #clock, #battery, #backlight, #pulseaudio, #network, #mpd, #memory, #cpu  {
+#mode, #cava, #temperature, #language, #custom-spotify, #tray ,#custom-keyboard, #custom-date, #custom-wallpaper, #custom-launcher, #custom-power, #custom-media, #custom-updates, #clock, #battery, #backlight, #pulseaudio, #network, #mpd, #memory, #cpu  {
   border-radius: 10px;
-  margin: 10px 0px 0px 5px;
+  margin: 10px 0px 0px 6px;
   padding-right: 10px;
   padding-left: 10px;
 	transition: none;
@@ -49,12 +60,66 @@ tooltip label {
   /* border: 0.1rem solid #96CDFB */
 }
 
+#custom-launcher {
+	font-size: 24px;
+  padding-right: 5px;
+  margin-left: 10px;
+  box-shadow:inset 0px 0px 0px 2px;
+  color: #f38ba8;
+}
+
 #cpu {
   border-radius: 10px 0 0 10px;
+  /* color: #f9e2af; */
 }
 
 #temperature {
   border-radius: 0 10px 10px 0;
+  /* color: #f9e2af; */
+}
+
+#memory {
+  /* color: #a6e3a1; */
+}
+
+#custom-media {
+  /* box-shadow:inset 0px 0px 0px 0.1rem; */
+}
+
+#custom-keyboard {
+  /* box-shadow:inset 0px 0px 0px 0.1rem; */
+	font-size: 26px;
+  padding-right: 0px;
+  /* color: #b4befe; */
+}
+
+#custom-wallpaper {
+  /* box-shadow:inset 0px 0px 0px 0.1rem; */
+  /* color: #f5c2e7; */
+}
+
+#network {
+  /* color: #f9e2af; */
+}
+
+#pulseaudio {
+  /* border-radius: 10px 0 0 10px; */
+}
+
+#backlight {
+  /* border-radius: 0 10px 10px 0; */
+}
+
+#clock {
+  /* color: #cba6f7; */
+}
+
+#battery {
+  /* color: #a6e3a1; */
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af	;
 }
 
 #battery.critical:not(.charging) {
@@ -63,10 +128,12 @@ tooltip label {
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    color: #f38ba8;
 }
 
 @keyframes blink {
-    to {
+   
+  to {
       background-color: #3A2E40;
     }
 }
@@ -79,19 +146,6 @@ tooltip label {
 }
 
 
-#custom-launcher {
-	font-size: 24px;
-  padding-right: 5px;
-  margin-left: 10px;
-  color: #1e1e2e;
-  background: #89DCEB;
-}
-#custom-keyboard {
-	font-size: 26px;
-  padding-right: 0px;
-  color: #1e1e2e;
-  background: #89DCEB;
-}
 
 /* #custom-keyboard { */
 /* 	font-size: 26px; */
@@ -103,8 +157,15 @@ tooltip label {
   font-size: 24px;
   padding-right: 5px;
   margin-right: 10px;
-  color: #1e1e2e;
-  background: #89DCEB;
+  box-shadow:inset 0px 0px 0px 2px;
+}
+
+#custom-power button.focused {
+
+  color: #c9545d;
+
+  border-top: 2px solid #c9545d;
+
 }
 
 /* #network.disconnected { */
@@ -118,6 +179,7 @@ tooltip label {
 
 #workspaces {
   border-radius: 10px;
+  font-size: 40px;
   transition: none;
   /* background: #161320; */
   background: #1e1e2e;
@@ -130,6 +192,7 @@ tooltip label {
   border-radius: 10px;
   padding: 10px 15px 10px 10px;
   margin: 0px 0px 0px 0px;
+  animation: fadeIn 0.2s ease-in-out both
 }
 
 #workspaces button:hover {
@@ -141,6 +204,7 @@ tooltip label {
   /* border: 0.1rem solid #96CDFB; */
   /* using box shadow to keep the border inside the elem */
   box-shadow:inset 0px 0px 0px 0.1rem #96CDFB;
+
   /* background: #1e1a2c; */
   /* color: #161320; */
   background: #1F2132;
@@ -149,9 +213,10 @@ tooltip label {
 }
 
 #workspaces button.active {
-  color: red;
-  background: red;
-  padding: 10px 15px 10px 15px;
+  box-shadow:inset 0 0 0 0.1rem;
+  color: #eba0ac;
+  /* background: #181825; */
+  /* color: #1e1e2e; */
 }
 
 #tags {

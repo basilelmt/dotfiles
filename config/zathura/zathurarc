@@ -1,5 +1,8 @@
 # Zathura configuration file
 # See man `man zathurarc'
+#
+
+set font "JetbrainsMono Nerd Font"
 
 set window-title-basename "true"
 set selection-clipboard "clipboard"

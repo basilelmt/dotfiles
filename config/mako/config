@@ -2,7 +2,7 @@
 background-color=#1F2132
 text-color=#96CDFB
 border-radius=10
-default-timeout=5000
+default-timeout=7000
 border-size=0
 width=360
 format=%s\n%b
