@@ -1,0 +1,14 @@
+@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css");
+
+div[data-list-item-id="guildsnav___home"] {
+	background: url('https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png') top center/110% no-repeat;
+}
+
+div[class^="unreadMentionsIndicatorBottom-"] {
+	bottom: 70px;
+}
+
+#app-mount [data-list-item-id="guildsnav___home"]>div {
+	color: transparent;
+	background-color: transparent;
+}
