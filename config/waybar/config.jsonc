@@ -6,10 +6,7 @@
     "temperature",
     "memory",
     "custom/media",
-    "cava",
-    "custom/keyboard",
-    "cava",
-    "tray"
+    "custom/keyboard"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -113,7 +110,7 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{: %H:%M   %d/%m/%Y}",
+    "format": " {:%H:%M  󰃭 %d/%m/%Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
@@ -146,7 +143,8 @@
     "format-icons": {
       "spotify": " ",
       "firefox": "󰈹 ",
-      "default": " "
+      "chrome": " ",
+      "default": " "
     },
     "escape": true,
     "exec": "$HOME/.config/system-scripts/mediaplayer.py 2> /dev/null",

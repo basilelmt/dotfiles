@@ -16,6 +16,6 @@ lock)
 	~/.config/system-scripts/lock.sh
 	;;
 logout)
-	swaymsg exit
+	hyprctl dispatch exit
 	;;
 esac

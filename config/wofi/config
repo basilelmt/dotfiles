@@ -22,13 +22,13 @@ term=kitty
 /* xoffset=10 */
 /* yoffset=5 */
 
-image_size=25
+image_size=32
 
 drun-display_generic=true
 layer=overlay
-key_down=Control_L-n
-key_up=Control_L-p
-Clear=Control_L-w
+key_down=Ctrl-n
+key_up=Ctrl-p
+Clear=Ctrl-w
 
 allow_markup=true
 prompt= Hmm, what are you looking for?

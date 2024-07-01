@@ -5,7 +5,7 @@
 	border: none;
 	border-radius: 10px;
   font-family: "JetbrainsMono Nerd Font" ;
-	font-size: 15px;
+	font-size: 19px;
 	min-height: 10px;
 }
 
@@ -61,7 +61,7 @@ tooltip label {
 }
 
 #custom-launcher {
-	font-size: 24px;
+	font-size: 28px;
   padding-right: 5px;
   margin-left: 10px;
   box-shadow:inset 0px 0px 0px 2px;
@@ -69,7 +69,7 @@ tooltip label {
 }
 
 #cpu {
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
   /* color: #f9e2af; */
 }
 
@@ -88,7 +88,7 @@ tooltip label {
 
 #custom-keyboard {
   /* box-shadow:inset 0px 0px 0px 0.1rem; */
-	font-size: 26px;
+	font-size: 28px;
   padding-right: 0px;
   /* color: #b4befe; */
 }
@@ -154,7 +154,7 @@ tooltip label {
 /*   background: #1F2132; */
 /* } */
 #custom-power {
-  font-size: 24px;
+  font-size: 28px;
   padding-right: 5px;
   margin-right: 10px;
   box-shadow:inset 0px 0px 0px 2px;
